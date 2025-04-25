@@ -114,8 +114,7 @@
     const symbols = '死怖鬼魔悪業罪闇獄血祟呪霊鎮魂狂罰骸黒冥滅殺厄災禍狼斬闘邪憎怨痛絶叫血獣鬼神破滅暗黒地獄';
     const container = document.getElementById('container');
     let chaosLevel = 1;
-    
-    // Create initial symbols
+
     for(let i = 0; i < 200; i++) {
       createSymbol();
     }
@@ -132,33 +131,27 @@
 
     function unleashChaos() {
       chaosLevel++;
-      
-      // Add more symbols
+
       for(let i = 0; i < 100 * chaosLevel; i++) {
         createSymbol();
       }
-      
-      // Change button text
+
       document.querySelector('.enter-button').innerHTML = '永遠に';
-      
-      // Speed up animations
+
       document.querySelectorAll('.symbol').forEach(symbol => {
         const currentClass = symbol.className;
         symbol.style.animationDuration = `${Math.random() * 1 + 0.5}s`;
       });
 
-      // Make title more chaotic
       document.querySelector('.title').style.animationDuration = `${0.1 / chaosLevel}s`;
     }
 
-    // Add symbols on mouse movement
     document.addEventListener('mousemove', (e) => {
       if(Math.random() > 0.6) {
         createSymbol();
       }
     });
 
-    // Add symbols periodically
     setInterval(() => {
       if (chaosLevel > 0) {
         for(let i = 0; i < chaosLevel * 2; i++) {
